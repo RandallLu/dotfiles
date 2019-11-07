@@ -1,0 +1,29 @@
+"*":
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+  core:
+    disabledPackages: [
+      "symbols-view"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-dark-syntax"
+    ]
+  "cursor-history": {}
+  editor:
+    fontSize: 12
+  "exception-reporting":
+    userId: "206510ae-ae48-4b18-9e0e-b3cd3ea8504c"
+  "go-plus":
+    disabledBundledPackages: [
+      "go-debug"
+    ]
+  "platformio-ide-terminal":
+    style:
+      theme: "pro"
+  "terminal-tab":
+    defaultLocation: "center"
+  welcome:
+    showOnStartup: false

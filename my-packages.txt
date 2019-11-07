@@ -1,0 +1,8 @@
+atom-ctags
+atom-ide-ui
+cursor-history
+go-plus
+go-signature-statusbar
+ide-go
+terminal-tab
+vim-mode-plus

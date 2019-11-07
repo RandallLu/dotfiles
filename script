@@ -1,0 +1,1 @@
+ls packages | xargs -n 1 echo | cut -d/ -f1 > my-packages.txt
