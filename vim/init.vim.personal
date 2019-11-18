@@ -1,4 +1,4 @@
-call plug#begin('~/.local/share/nvim/site/pack/git-plugins')
+call plug#begin('~/.local/share/nvim/site/pack/git-plugins/start')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -9,6 +9,10 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'Shougo/deoplete-clangx'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
 
@@ -22,13 +26,19 @@ let g:airline#extensions#branch#enabled = 1
 set termguicolors
 set number
 set ignorecase
+set hidden
+set timeoutlen=500
 colorscheme neodark
 "let g:neodark#background = '#202020'"
 
+let mapleader = "\<space>"
 
 syntax on
 
-nnoremap H gT
-nnoremap L gt
+"nnoremap H gT
+"nnoremap L gt
+nnoremap H :bp<Cr>
+nnoremap L :bn<Cr>
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
