@@ -1,0 +1,4 @@
+pip install neovim
+mkdir -p ~/.local/share/nvim/site/pack/git-plugins/
+go get -u github.com/stamblerre/gocode
+pip3 install --user pynvim
