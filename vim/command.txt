@@ -8,3 +8,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 mv ~/.vimrc ~/.config/nvim/vimrc && ln -s ~/.config/nvim/init.vim ~/.vimrc
 mv ./vim/init.vim ~/.config/nvim/init.vim
+
+
+git config --global push.default current
+
+
