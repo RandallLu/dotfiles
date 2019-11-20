@@ -1,13 +1,37 @@
+" -----------------------------------Testing-----------------------------------
+function s:Cursor_Moved()
+  let cur_pos = winline()
+  if g:last_pos == 0
+    set cul
+    let g:last_pos = cur_pos
+    return
+  endif
+  let diff = g:last_pos - cur_pos
+  if diff > 1 || diff < -1
+    set cul
+  else
+    set nocul
+  endif
+  let g:last_pos = cur_pos
+endfunction
+autocmd CursorMoved,CursorMovedI * call s:Cursor_Moved()
+let g:last_pos = 0
+
+
+
 
 " -----------------------------------Setting-----------------------------------
 " General
 syntax on
-colorscheme neodark
+colorscheme neodark 
 set termguicolors
 set number
 set ignorecase
 set hidden
 set timeoutlen=500
+set splitright
+
+
 
 
 " Global variables 
@@ -32,6 +56,13 @@ let mapleader="\<space>"
 
 
 " ----------------------------------Keybindings--------------------------------
+"inoremap " ""<left>
+"inoremap ' ''<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
 "nnoremap H gT
 "nnoremap L gt
 nnoremap H :bp<Cr>
@@ -90,12 +121,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'majutsushi/tagbar'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-sensible'
 autocmd! User vim-which-key call which#register('<Space>', 'g:which_key_map')
 " Plug 'ujihisa/neco-look' " look for english word
 
 
 " Themes
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
 
 
 " For golang
