@@ -118,4 +118,5 @@ bindkey '^f' autosuggest-accept
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=auto
+alias pip3='noglob pip3'
 
