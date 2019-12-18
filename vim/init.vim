@@ -4,8 +4,7 @@ function s:Cursor_Moved()
   if g:last_pos == 0
     set cul
     let g:last_pos = cur_pos
-    return
-  endif
+    return endif
   let diff = g:last_pos - cur_pos
   if diff > 1 || diff < -1
     set cul
@@ -77,6 +76,7 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 let g:which_key_map =  {}
 autocmd! User * call which_key#register('<Space>', 'g:which_key_map')
 
+
 let g:which_key_map.f = { 'name' : '+file' }
 
 nnoremap <silent> <leader>fs :update<Cr>
@@ -102,8 +102,17 @@ let g:which_key_map.s.p = 'find text the current project'
 
 let g:which_key_map.t = {'name': "tag"}
 nnoremap <silent> <leader>tt :TagbarToggle<Cr>
+
 let g:which_key_map.t.t = 'Tagbar'
-let g:which_key_map.f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>tn :vsplit<cr>:terminal<cr>
+let g:which_key_map.t.n = 'open new terminal'
+
+nnoremap <silent> <leader>tv :vsplit<cr>:terminal<cr>
+let g:which_key_map.t.v = 'open new terminal in vertical split'
+
+nnoremap <silent> <leader>ts :split<Cr>:term<Cr>
+let g:which_key_map.t.s = 'Open new terminal in horizontal split'
 
 
 
