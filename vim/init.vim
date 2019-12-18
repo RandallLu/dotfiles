@@ -74,37 +74,37 @@ nnoremap <C-g> :Rg<Cr>
 
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-
 let g:which_key_map =  {}
+autocmd! User * call which_key#register('<Space>', 'g:which_key_map')
+
 let g:which_key_map.f = { 'name' : '+file' }
 
-nnoremap <silent> <leader>fs :update<CR>
+nnoremap <silent> <leader>fs :update<Cr>
 let g:which_key_map.f.s = 'save-file'
 
-nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+nnoremap <silent> <leader>fd :e ~/.vimrc<Cr>
 let g:which_key_map.f.d = 'open-vimrc'
 
-nnoremap <silent> <leader>oq  :copen<CR>
-nnoremap <silent> <leader>ol  :lopen<CR>
-let g:which_key_map.o = {
-      \ 'name' : '+open',
-      \ 'q' : 'open-quickfix'    ,
-      \ 'l' : 'open-locationlist',
-      \ }
+nnoremap <silent> <leader>ff :FZF<Cr>
+let g:which_key_map.f.f = 'open files in the current folder'
 
-let g:which_key_map.b = {
-      \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
-      \ }
+nnoremap <silent> <leader>fp :GFiles<Cr>
+let g:which_key_map.f.p = 'open files in the current project'
+
+
+let g:which_key_map.s = {'name': '+search'}
+nnoremap <silent> <leader>sb :Rg<Cr>
+let g:which_key_map.s.b = 'find text in the current buffer'
+
+nnoremap <silent> <leader>sp :Rg<Cr>
+let g:which_key_map.s.p = 'find text the current project'
+
+
+let g:which_key_map.t = {'name': "tag"}
+nnoremap <silent> <leader>tt :TagbarToggle<Cr>
+let g:which_key_map.t.t = 'Tagbar'
+let g:which_key_map.f = { 'name' : '+file' }
+
 
 
 
@@ -116,13 +116,11 @@ call plug#begin('~/.local/share/nvim/site/pack/git-plugins/start')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/neco-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'majutsushi/tagbar'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 autocmd! User vim-which-key call which#register('<Space>', 'g:which_key_map')
 " Plug 'ujihisa/neco-look' " look for english word
@@ -134,7 +132,6 @@ Plug 'joshdick/onedark.vim'
 
 
 " For golang
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
