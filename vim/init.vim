@@ -68,6 +68,7 @@ nnoremap H :bp<Cr>
 nnoremap L :bn<Cr>
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
+tnoremap <Esc> <C-\><C-n>
 
 
 
