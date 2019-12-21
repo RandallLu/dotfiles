@@ -4,8 +4,7 @@ function s:Cursor_Moved()
   if g:last_pos == 0
     set cul
     let g:last_pos = cur_pos
-    return
-  endif
+    return endif
   let diff = g:last_pos - cur_pos
   if diff > 1 || diff < -1
     set cul
@@ -38,6 +37,8 @@ set splitright
 let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
+
 
 
 " Golang highlight enable settings
@@ -69,42 +70,53 @@ nnoremap H :bp<Cr>
 nnoremap L :bn<Cr>
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
+tnoremap <Esc> <C-\><C-n>
 
 
 
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-
 let g:which_key_map =  {}
+autocmd! User * call which_key#register('<Space>', 'g:which_key_map')
+
+
 let g:which_key_map.f = { 'name' : '+file' }
 
-nnoremap <silent> <leader>fs :update<CR>
+nnoremap <silent> <leader>fs :update<Cr>
 let g:which_key_map.f.s = 'save-file'
 
-nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+nnoremap <silent> <leader>fd :e ~/.vimrc<Cr>
 let g:which_key_map.f.d = 'open-vimrc'
 
-nnoremap <silent> <leader>oq  :copen<CR>
-nnoremap <silent> <leader>ol  :lopen<CR>
-let g:which_key_map.o = {
-      \ 'name' : '+open',
-      \ 'q' : 'open-quickfix'    ,
-      \ 'l' : 'open-locationlist',
-      \ }
+nnoremap <silent> <leader>ff :FZF<Cr>
+let g:which_key_map.f.f = 'open files in the current folder'
 
-let g:which_key_map.b = {
-      \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
-      \ }
+nnoremap <silent> <leader>fp :GFiles<Cr>
+let g:which_key_map.f.p = 'open files in the current project'
+
+
+let g:which_key_map.s = {'name': '+search'}
+nnoremap <silent> <leader>sb :Rg<Cr>
+let g:which_key_map.s.b = 'find text in the current buffer'
+
+nnoremap <silent> <leader>sp :Rg<Cr>
+let g:which_key_map.s.p = 'find text the current project'
+
+
+let g:which_key_map.t = {'name': "tag"}
+nnoremap <silent> <leader>tt :TagbarToggle<Cr>
+
+let g:which_key_map.t.t = 'Tagbar'
+
+nnoremap <silent> <leader>tn :vsplit<cr>:terminal<cr>
+let g:which_key_map.t.n = 'open new terminal'
+
+nnoremap <silent> <leader>tv :vsplit<cr>:terminal<cr>
+let g:which_key_map.t.v = 'open new terminal in vertical split'
+
+nnoremap <silent> <leader>ts :split<Cr>:term<Cr>
+let g:which_key_map.t.s = 'Open new terminal in horizontal split'
+
 
 
 
@@ -116,12 +128,10 @@ call plug#begin('~/.local/share/nvim/site/pack/git-plugins/start')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/neco-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'majutsushi/tagbar'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -135,7 +145,6 @@ Plug 'joshdick/onedark.vim'
 
 
 " For golang
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
