@@ -130,10 +130,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 autocmd! User vim-which-key call which#register('<Space>', 'g:which_key_map')
 " Plug 'ujihisa/neco-look' " look for english word
 
