@@ -29,6 +29,7 @@ set ignorecase
 set hidden
 set timeoutlen=500
 set splitright
+set mouse=a " hold option key when you select the text, then simple c-v; or just select the text, hold control key and right click and select copy manuall
 
 
 
