@@ -29,6 +29,8 @@ set ignorecase
 set hidden
 set timeoutlen=500
 set splitright
+set mouse=a " hold option key when you select the text, then simple c-v; or just select the text, hold control key and right click and select copy manuall
+
 
 
 
@@ -134,7 +136,6 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-commentary'
 autocmd! User vim-which-key call which#register('<Space>', 'g:which_key_map')
 " Plug 'ujihisa/neco-look' " look for english word
