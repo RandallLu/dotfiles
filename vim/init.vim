@@ -69,23 +69,23 @@ nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
 
 
 " -----------------------------------Function-----------------------------------
-function s:Cursor_Moved()
-  let cur_pos = winline()
-  if g:last_pos == 0
-    set cul
-    let g:last_pos = cur_pos
-    return
-  endif
-  let diff = g:last_pos - cur_pos
-  if diff > 1 || diff < -1
-    set cul
-  else
-    set nocul
-  endif
-  let g:last_pos = cur_pos
-endfunction
-autocmd CursorMoved,CursorMovedI * call s:Cursor_Moved()
-let g:last_pos = 0
+" function s:Cursor_Moved()
+"   let cur_pos = winline()
+"   if g:last_pos == 0
+"     set cul
+"     let g:last_pos = cur_pos
+"     return
+"   endif
+"   let diff = g:last_pos - cur_pos
+"   if diff > 1 || diff < -1
+"     set cul
+"   else
+"     set nocul
+"   endif
+"   let g:last_pos = cur_pos
+" endfunction
+" autocmd CursorMoved,CursorMovedI * call s:Cursor_Moved()
+" let g:last_pos = 0
 
 
 
@@ -98,6 +98,11 @@ let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler' "to show terminal buffer
+let g:airline_powerline_fonts = 1
+
+let g:srcery_dim_lisp_paren = 1
+
+
 
 
 " Golang highlight enable settings
@@ -117,7 +122,7 @@ let mapleader="\<Space>"
 
 " General
 syntax on
-colorscheme neodark
+colorscheme srcery
 
 
 set termguicolors
@@ -224,6 +229,8 @@ Plug 'dense-analysis/ale'
 " Themes
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'srcery-colors/srcery-vim'
+
 
 
 " For golang
