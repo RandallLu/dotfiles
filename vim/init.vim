@@ -173,8 +173,14 @@ let g:which_key_map.s.p = 'find text the current project'
 " tag/termnial key binding
 let g:which_key_map.t = {'name': "+tag/terminal"}
 
-nnoremap <silent> <leader>tt :TagbarToggle<Cr>
+nnoremap <silent> <leader>tb :TagbarToggle<Cr>
 let g:which_key_map.t.t = 'tagbar'
+
+nnoremap <silent> <leader>tc :Tags<Cr>
+let g:which_key_map.t.c = 'create tags'
+
+nnoremap <silent> <leader>tt :NERDTreeToggle<Cr>
+let g:which_key_map.t.t = 'nerd tree'
 
 nnoremap <silent> <leader>tn :term<cr>
 let g:which_key_map.t.n = 'open new terminal'
@@ -223,6 +229,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
+Plug 'preservim/nerdtree'
 
 
 
