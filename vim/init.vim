@@ -67,8 +67,10 @@ nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
 
 
 
+" -------------------------------------------------------------------------------------------------
+" Custom functions 
+" -------------------------------------------------------------------------------------------------
 
-" -----------------------------------Function-----------------------------------
 " function s:Cursor_Moved()
 "   let cur_pos = winline()
 "   if g:last_pos == 0
@@ -91,18 +93,17 @@ nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
 
 
 
+" -------------------------------------------------------------------------------------------------
+" Settings. 
+" Including global vars, themes, etc. Miscellenious 
+" -------------------------------------------------------------------------------------------------
 
-" -----------------------------------Setting-----------------------------------
 " Global variables
 let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler' "to show terminal buffer
 let g:airline_powerline_fonts = 1
-
-let g:srcery_dim_lisp_paren = 1
-
-
 
 
 " Golang highlight enable settings
@@ -120,6 +121,7 @@ let g:go_def_mapping_enabled = 0
 " Leader
 let mapleader="\<Space>"
 
+
 " General
 syntax on
 colorscheme srcery
@@ -131,17 +133,23 @@ set ignorecase
 set hidden
 set timeoutlen=500
 set splitright
-set mouse=a " hold option key when you select the text, then simple c-v; or just select the text, hold control key and right click and select copy manually
+" hold option key when you select the text, then simple c-v; or just select the text, hold control key and right click and select copy manually
+set mouse=a 
 
-" ----------------------------------Keybindings--------------------------------
-"nnoremap H gT
+
+" -------------------------------------------------------------------------------------------------
+" Keybindings. 
+" -------------------------------------------------------------------------------------------------
+
+" for tabs
+"nnoremap H gT 
 "nnoremap L gt
 nnoremap H :bp<Cr>
 nnoremap L :bn<Cr>
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
-tnoremap <Esc> <C-\><C-n>
-
+" press esc to exit terminal mode  
+tnoremap <Esc> <C-\><C-n> 
 
 
 
@@ -167,6 +175,7 @@ let g:which_key_map.f.p = 'open files in the current project'
 
 " search/ripgrep key binding  
 let g:which_key_map.s = {'name': '+search'}
+
 nnoremap <silent> <leader>sp :Rg<Cr>
 let g:which_key_map.s.p = 'find text the current project'
 
@@ -202,7 +211,6 @@ let g:which_key_map.g.l = 'Git log'
 
 " coc.nvim key binding 
 let g:which_key_map.c = {'name': '+coc.vim'}
-
 let g:which_key_map.c.f = 'Format selected'
 let g:which_key_map.c.a = 'CocList diagnostics'
 let g:which_key_map.c.e = 'CosList commands'
@@ -217,7 +225,6 @@ let g:which_key_map.c.p = 'CocListResume'
 call plug#begin('~/.local/share/nvim/site/pack/git-plugins/start')
 
 "General
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
@@ -227,10 +234,10 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!']}
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
+" Extra plugins: CocInstall coc-pairs; 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
-
 
 
 " Themes
@@ -239,11 +246,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'srcery-colors/srcery-vim'
 
 
-
 " For golang
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 
 
 call plug#end()
