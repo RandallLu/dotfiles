@@ -29,9 +29,16 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
 " Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -39,8 +46,19 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -48,6 +66,23 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 vmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
+
+" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 " Show all diagnostics
 nnoremap <silent> <space>ca  :<C-u>CocList diagnostics<cr>
 " Manage extensions
@@ -104,6 +139,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler' "to show terminal buffer
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
 
 
 " Golang highlight enable settings
@@ -114,8 +150,10 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
+" disable vim-go :GoDoc short cut (K)
+let g:go_doc_keywordprg_enabled = 0
+
 
 
 " Leader
@@ -213,7 +251,7 @@ let g:which_key_map.g.l = 'Git log'
 let g:which_key_map.c = {'name': '+coc.vim'}
 let g:which_key_map.c.f = 'Format selected'
 let g:which_key_map.c.a = 'CocList diagnostics'
-let g:which_key_map.c.e = 'CosList commands'
+let g:which_key_map.c.e = 'CocList commands'
 let g:which_key_map.c.o = 'CocList outline'
 let g:which_key_map.c.s = 'CocList -I symbols'
 let g:which_key_map.c.j = 'CocNext'
@@ -234,16 +272,18 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!']}
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
-" Extra plugins: CocInstall coc-pairs; 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
+" Extra plugins: CocInstall coc-pairs; 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 
 " Themes
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'srcery-colors/srcery-vim'
+Plug 'mhartington/oceanic-next'
 
 
 " For golang
