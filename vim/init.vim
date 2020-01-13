@@ -162,7 +162,7 @@ let mapleader="\<Space>"
 
 " General
 syntax on
-colorscheme srcery
+colorscheme OceanicNext 
 
 
 set termguicolors
