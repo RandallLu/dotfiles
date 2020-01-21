@@ -200,7 +200,7 @@ nnoremap <C-g> :Rg<Cr>
 " press esc to exit terminal mode  
 tnoremap <Esc> <C-\><C-n> 
 " Use c-j to jump back in the jump list
-nnoremap <C-j> <C-i>
+nnoremap <C-u> <C-i>
 
 
 
