@@ -59,6 +59,9 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+" Invoke documentation when cursor hold. 300ms seems to be a little bit too
+" fast though
+" autocmd CursorHold * silent call CocAction('doHover') 
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -70,6 +73,7 @@ nmap <leader>cf  <Plug>(coc-format-selected)
 " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -182,12 +186,21 @@ set mouse=a
 " for tabs
 "nnoremap H gT 
 "nnoremap L gt
+" For buffers
 nnoremap H :bp<Cr>
 nnoremap L :bn<Cr>
+" For navigating windows. 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" 
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
 " press esc to exit terminal mode  
 tnoremap <Esc> <C-\><C-n> 
+" Use c-j to jump back in the jump list
+nnoremap <C-j> <C-i>
 
 
 
@@ -237,6 +250,23 @@ let g:which_key_map.t.v = 'open new terminal in vertical split'
 
 nnoremap <silent> <leader>ts :split<Cr>:term<Cr>
 let g:which_key_map.t.s = 'Open new terminal in horizontal split'
+
+
+" Buffer keybinding
+let g:which_key_map.b = {'name': "+buffer"}
+
+nnoremap <silent> <leader>bv :vs<Cr>
+let g:which_key_map.bv = 'Split buffer vertical'
+
+nnoremap <silent> <leader>bs :split<Cr>
+let g:which_key_map.bv = 'Split buffer horizontal'
+
+nnoremap <silent> <leader>bd :bd<Cr>
+let g:which_key_map.bv = 'Close current buffer'
+
+nnoremap <silent> <leader>c: gc<Cr>
+let g:which_key_map.c = 'Comment'
+
 
 " git key binding 
 let g:which_key_map.g = {'name': "+git"}
