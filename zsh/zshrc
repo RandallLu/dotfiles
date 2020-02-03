@@ -2,14 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/randalllu02/.oh-my-zsh"
+export ZSH="/Users/randy/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="oxide"
-# ZSH_THEME="robbyrussell"
+# ZSH_THEME="oxide"
+ZSH_THEME="robbyrussell"
 
 
 # Set list of themes to pick from when loading at random
@@ -118,8 +118,15 @@ export PATH=$PATH:$GOROOT/bin
 alias ctags="`brew --prefix`/bin/ctags"
 alias sup="cd ~/Desktop/projects/bots/supreme"
 alias dots="cd ~/Desktop/projects/dotfiles"
+alias mex="cd ~/Desktop/projects/mex"
+alias shopify="cd ~/Desktop/projects/shopify"
 alias updatedots="dots && make update"
+alias updatevim="dots && make updatevim"
+alias updatezsh="dots && make updatezsh"
 alias importdots="dots && make import"
+alias importvim="dots && make importvim"
+alias importzsh="dots && make importzsh"
+
 alias pip3='noglob pip3'
 
 
