@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Drive safe.
-set -Eexou pipefail
+set -xou pipefail
 
 # Source functions.
 source ./functions.sh
@@ -16,17 +16,24 @@ install_brew
 # Neovim
 install_nvim
 
+# Vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # Python
 brew install python3 && pip3 install --user pynvim
 
 # Golang
-brew install golang
+brew install golang 
 
 # Node
-brew install node
+brew install node 
 
 # Zsh
-brew install zsh
+brew install zsh 
+
+# Oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -50,8 +57,14 @@ git config --global push.default current
 chsh -s /bin/zsh
 
 # Setup neovim
+mkdir -p ~/.config/nvim
+touch ~/.config/nvim/init.vim
 mv ~/.vimrc ~/.vimrc_back
 ln -s ~/.config/nvim/init.vim ~/.vimrc
+
+# Install fonts
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
 
 
 # ---------------------------------------------------------
