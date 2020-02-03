@@ -72,11 +72,11 @@ plugins=(
 	git
 	colored-man-pages
 	colorize
-	zsh-syntax-highlighting
-	npm
-	zsh-autosuggestions
-	fzf	         
 	rand-quote
+	npm
+	fzf	         
+	zsh-syntax-highlighting
+	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,7 +116,9 @@ export PATH=$PATH:$GOROOT/bin
 alias ctags="`brew --prefix`/bin/ctags"
 alias sup="cd ~/Desktop/projects/bots/supreme"
 alias dots="cd ~/Desktop/projects/dotfiles"
-alias updatedots="cp ~/.vimrc ~/Desktop/projects/dotfiles/vim/init.vim"
-alias importdots="cp ~/Desktop/projects/dotfiles/vim/init.vim ~/.vimrc"
+alias updatedots="dots && make update"
+alias importdots="dots && make import"
 alias pip3='noglob pip3'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
