@@ -1,14 +1,17 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation.  
 export ZSH="/Users/randall.lu/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=""
+# ZSH_THEME="oxide"
+# ZSH_THEME="gozilla"
+ZSH_THEME="intheloop"
+# ZSH_THEME="random"
 # autoload -U promptinit; promptinit
 # prompt pure
 
@@ -108,14 +111,25 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# bindkey '^f' autosuggest-accept
 
-alias ctagshere="ls ./"
-alias svim='vim -u ~/.SpaceVim/vimrc'
+alias build="cd ~/Desktop/projects/go-docker/build && make start"
+alias merlion="cd ~/go/src/git.garena.com/shopee-server/merlion-server"
+alias bff="cd ~/go/src/git.garena.com/shopee/deep/bff-rcmd"
+alias feedspex="cd ~/go/src/git.garena.com/shopee-server/feed-merlion-spex"
+alias ssd="cd ~/go/src/git.garena.com/shopee/deep/ssd" 
+alias monitor="cd ~/go/src/git.garena.com/shopee-server/merlion-monitor"
+alias storage="cd ~/go/src/git.garena.com/shopee-server/merlion-storage"
+alias rank="cd ~/go/src/git.garena.com/shopee-server/merlion-rank"
+alias dots="cd ~/Desktop/projects/mine/dotfiles"
+alias updatedots="cp ~/.vimrc ~/Desktop/projects/mine/dotfiles/vim/init.vim" 
+alias importdots="cp ~/Desktop/projects/mine/dotfiles/vim/init.vim ~/.vimrc"
 alias vim="nvim"
+alias mypporf="~/shell_scripts/pprof.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey '^f' autosuggest-accept
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
-export GO111MODULE=auto
+export GO111MODULE=on
+alias ctags="`brew --prefix`/bin/ctags"
 
