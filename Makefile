@@ -21,5 +21,5 @@ import: importzsh importvim
 	@echo "Done."
 
 install:
-	./scripts/install.sh
+	./install.sh
 
