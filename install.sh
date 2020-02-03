@@ -75,4 +75,6 @@ brew cask install font-hack-nerd-font
 # Install dotfiles
 # ---------------------------------------------------------
 make import 
+
+echo "Edit the ~/.zshrc username to make changes effective"
 echo "Install iterm theme: https://github.com/mhartington/oceanic-next-iterm"
