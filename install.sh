@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Drive safe.
-set -xou pipefail
+# set -xou pipefail
 
 # Source functions.
 source ./functions.sh
@@ -71,3 +71,4 @@ brew cask install font-hack-nerd-font
 # Install dotfiles
 # ---------------------------------------------------------
 make import 
+echo "Install iterm theme: https://github.com/mhartington/oceanic-next-iterm"
