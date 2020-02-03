@@ -8,6 +8,7 @@ source ./functions.sh
 
 # Install and config brew
 install_brew
+brew tap caskroom/cask
 
 # ---------------------------------------------------------
 # Install dependency
@@ -28,6 +29,9 @@ brew install golang
 
 # Node
 brew install node 
+
+# Iterm2
+brew cask install iterm2
 
 # Zsh
 brew install zsh 
