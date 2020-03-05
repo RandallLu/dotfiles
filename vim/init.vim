@@ -59,6 +59,8 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+" Fix import when save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 " Invoke documentation when cursor hold. 300ms seems to be a little bit too
 " fast though
 " autocmd CursorHold * silent call CocAction('doHover') 
@@ -155,6 +157,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " disable vim-go :GoDef short cut (gd)
 let g:go_def_mapping_enabled = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " disable vim-go :GoDoc short cut (K)
 let g:go_doc_keywordprg_enabled = 0
 
@@ -167,8 +171,15 @@ let mapleader="\<Space>"
 " General
 syntax on
 colorscheme OceanicNext 
+filetype plugin indent on
 
-
+" On pressing tab, insert 2 spaces
+set expandtab
+" show existing tab with 2 spaces width
+set tabstop=4
+set softtabstop=4
+" when indenting with '>', use 2 spaces width
+set shiftwidth=4
 set termguicolors
 set number
 set ignorecase
@@ -194,7 +205,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-" 
+" For opening split
+nnoremap <leader>/ :vsplit<cr>
+nnoremap <leader>x :split<cr>
+"
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
 " press esc to exit terminal mode  
@@ -256,26 +270,42 @@ let g:which_key_map.t.s = 'Open new terminal in horizontal split'
 let g:which_key_map.b = {'name': "+buffer"}
 
 nnoremap <silent> <leader>bv :vs<Cr>
-let g:which_key_map.bv = 'Split buffer vertical'
+let g:which_key_map.b.v = 'Split buffer vertical'
 
 nnoremap <silent> <leader>bs :split<Cr>
-let g:which_key_map.bv = 'Split buffer horizontal'
+let g:which_key_map.b.s = 'Split buffer horizontal'
 
 nnoremap <silent> <leader>bd :bd<Cr>
-let g:which_key_map.bv = 'Close current buffer'
+let g:which_key_map.b.d = 'Close current buffer'
 
-nnoremap <silent> <leader>c: gc<Cr>
-let g:which_key_map.c = 'Comment'
 
 
 " git key binding 
 let g:which_key_map.g = {'name': "+git"}
 
+nnoremap <silent> <leader>ga :Git add -p<Cr>
+let g:which_key_map.g.a = 'Git add'
+
 nnoremap <silent> <leader>gb :Gblame<Cr>
 let g:which_key_map.g.b = 'Git blame'
 
+nnoremap <silent> <leader>gc :Gcommit -v<Cr>
+let g:which_key_map.g.b = 'Git commit'
+
 nnoremap <silent> <leader>gl :Glog<Cr>
 let g:which_key_map.g.l = 'Git log'
+
+nnoremap <silent> <leader>gs :Gstatus <Cr>
+let g:which_key_map.g.s = 'Git status'
+
+nnoremap <silent> <leader>gp :Gpush<Cr>
+let g:which_key_map.g.p = 'Git push'
+
+nnoremap <silent> <leader>gd :Gdiff<Cr>
+let g:which_key_map.g.d = 'Git push'
+
+nnoremap <silent> <leader>gw :Gw<Cr>
+let g:which_key_map.g.d = 'Git write current file'
 
 " coc.nvim key binding 
 let g:which_key_map.c = {'name': '+coc.vim'}
@@ -306,6 +336,8 @@ Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 " Extra plugins: CocInstall coc-pairs; 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 
 
 
