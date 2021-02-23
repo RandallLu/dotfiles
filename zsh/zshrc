@@ -3,6 +3,9 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/randall.lu/.oh-my-zsh"
+export GOPATH="$HOME/go"
+export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=auto
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,10 +115,8 @@ source $ZSH/oh-my-zsh.sh
 alias ctagshere="ls ./"
 alias svim='vim -u ~/.SpaceVim/vimrc'
 alias vim="nvim"
+#ln -s /mnt/c/Users/randall/Desktop ~/win10 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^f' autosuggest-accept
-export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH/bin
-export GO111MODULE=auto
 
